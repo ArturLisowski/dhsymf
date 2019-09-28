@@ -113,4 +113,22 @@ class Results
     {
         return $this->grade;
     }
+
+    /**
+     * @param $value
+     * @return $this
+     */
+    public function setComment($value)
+    {
+        $this->comment = $value;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
 }

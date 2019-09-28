@@ -17,3 +17,25 @@ StudentGet:
     path: /student
     controller: App\Controller\StudentController::getStudent
     methods: Get
+
+########################################################################################################################
+
+ResultCreate:
+    path: /result
+    controller: App\Controller\ResultController::createResult
+    methods: POST
+
+ResultDelete:
+    path: /result
+    controller: App\Controller\ResultController::deleteResult
+    methods: DELETE
+
+ResultUpdate:
+    path: /result
+    controller: App\Controller\ResultController::updateResult
+    methods: PUT
+
+ResultGet:
+    path: /result
+    controller: App\Controller\ResultController::getResult
+    methods: Get
