@@ -94,4 +94,17 @@ class Student
         $this->email = $value;
         return $this;
     }
+
+    /**
+     * @return array
+     */
+    public function serialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'surname' => $this->getSurname(),
+            'email' => $this->getEmail()
+        ];
+    }
 }

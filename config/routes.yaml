@@ -2,3 +2,18 @@ StudentCreate:
     path: /student
     controller: App\Controller\StudentController::createStudent
     methods: POST
+
+StudentDelete:
+    path: /student
+    controller: App\Controller\StudentController::deleteStudent
+    methods: DELETE
+
+StudentUpdate:
+    path: /student
+    controller: App\Controller\StudentController::updateStudent
+    methods: PUT
+
+StudentGet:
+    path: /student
+    controller: App\Controller\StudentController::getStudent
+    methods: Get
