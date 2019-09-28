@@ -11,8 +11,9 @@ class Student_Service_Student
 
     public function __construct($_em)
     {
-    $this->_entityManager = $_em;
+        $this->_entityManager = $_em;
     }
+
     public function createStudent($input)
     {
         try {
@@ -34,7 +35,36 @@ class Student_Service_Student
                 'headers' => ['Content-Type' => 'application/json']
             ];
 
-            return new Response(json_encode(['id' => $_student->getId()]), 201, ['Content-Type' => 'application/json']);
+        } catch (\Exception $_e) {
+            return [
+                'result' => ['message' => $_e->getMessage()],
+                'code' => 400,
+                'headers' => []
+            ];
+        }
+    }
+
+    public function deleteStudent($input)
+    {
+        try {
+            if (empty($input['id'])) {
+                throw new \Exception('Incomplete payload', 400);
+            }
+
+            $_student = $this->_entityManager->getRepository(Student::class)->find($input['id']);
+
+            if (!isset($_student)) {
+                throw new \Exception('Student not found', 400);
+            }
+
+            $this->_entityManager->remove($_student);
+            $this->_entityManager->flush();
+
+            return [
+                'result' => [],
+                'code' => 200,
+                'headers' => ['Content-Type' => 'application/json']
+            ];
         } catch (\Exception $_e) {
             return [
                 'result' => ['message' => $_e->getMessage()],

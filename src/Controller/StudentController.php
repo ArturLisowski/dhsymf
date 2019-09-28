@@ -28,29 +28,10 @@ class StudentController extends Controller
      */
     public function deleteStudent(Request $_request)
     {
-        try {
-            $input = json_decode($_request->getContent(), true);
+        $input = json_decode($_request->getContent(), true);
+        $result = (new Student\Student_Service_Student($this->getDoctrine()->getManager()))->deleteStudent($input);
 
-            if (empty($input['id'])) {
-                throw new \Exception('Incomplete payload', 400);
-            }
-
-            $_student = $this->getDoctrine()->getRepository(Student::class)->find($input['id']);
-
-            if (!isset($_student)) {
-                throw new \Exception('Student not found', 400);
-            }
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($_student);
-            $entityManager->flush();
-
-            return new Response(null, 200);
-
-        } catch (\Exception $_e) {
-            return new Response(json_encode(['message' => $_e->getMessage()]), 400);
-        }
-
+        return new Response(json_encode($result['result']), $result['code'], $result['headers']);
     }
 
     /**
