@@ -50,10 +50,12 @@ class Student
 
     /**
      * @param string $value
+     * @return Student
      */
     public function setName(string $value)
     {
         $this->name = $value;
+        return $this;
     }
 
 
@@ -67,10 +69,12 @@ class Student
 
     /**
      * @param string $value
+     * @return Student
      */
     public function setSurname(string $value)
     {
         $this->surname = $value;
+        return $this;
     }
 
     /**
@@ -83,9 +87,11 @@ class Student
 
     /**
      * @param string $value
+     * @return Student
      */
     public function setEmail(string $value)
     {
         $this->email = $value;
+        return $this;
     }
 }

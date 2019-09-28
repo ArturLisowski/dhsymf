@@ -1,3 +1,4 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+StudentCreate:
+    path: /student
+    controller: App\Controller\StudentController::createStudent
+    methods: POST
