@@ -16,27 +16,10 @@ class StudentController extends Controller
      */
     public function createStudent(Request $_request)
     {
-        try {
-            $input = json_decode($_request->getContent(), true);
+        $input = json_decode($_request->getContent(), true);
+        $result = (new Student\Student_Service_Student($this->getDoctrine()->getManager()))->createStudent($input);
 
-            if (empty($input['name']) || empty($input['surname']) || empty($input['email'])) {
-                throw new \Exception('Incomplete payload', 400);
-            }
-
-            $_student = (new Student())
-                ->setName($input['name'])
-                ->setSurname($input['surname'])
-                ->setEmail($input['email']);
-
-            $_entityManager = $this->getDoctrine()->getManager();
-            $_entityManager->persist($_student);
-            $_entityManager->flush();
-
-            return new Response(json_encode(['id' => $_student->getId()]), 201, ['Content-Type' => 'application/json']);
-        } catch (\Exception $_e) {
-            return new Response(json_encode(['message' => $_e->getMessage()]), 400);
-        }
-
+        return new Response(json_encode($result['result']), $result['code'], $result['headers']);
     }
 
     /**
