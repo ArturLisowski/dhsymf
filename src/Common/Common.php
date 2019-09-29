@@ -3,6 +3,7 @@
 
 namespace App\Common;
 
+use Symfony\Component\HttpFoundation\Response;
 
 class Common
 {
@@ -13,5 +14,10 @@ class Common
             'code' => 400,
             'headers' => []
         ];
+    }
+
+    public static function prepareResponseFromResult($result)
+    {
+        return new Response(json_encode($result['result']), $result['code'], $result['headers']);
     }
 }

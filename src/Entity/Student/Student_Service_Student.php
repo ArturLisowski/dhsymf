@@ -40,7 +40,7 @@ class Student_Service_Student
 
             return [
                 'result' => ['id' => $_student->getId()],
-                'code' => 200,
+                'code' => 201,
                 'headers' => ['Content-Type' => 'application/json']
             ];
 
