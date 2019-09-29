@@ -9,11 +9,19 @@ class Student_Service_Student
 {
     private $_entityManager;
 
+    /**
+     * Student_Service_Student constructor.
+     * @param $_em
+     */
     public function __construct($_em)
     {
         $this->_entityManager = $_em;
     }
 
+    /**
+     * @param $input
+     * @return array
+     */
     public function createStudent($input)
     {
         try {
@@ -44,6 +52,10 @@ class Student_Service_Student
         }
     }
 
+    /**
+     * @param $input
+     * @return array
+     */
     public function deleteStudent($input)
     {
         try {
@@ -65,6 +77,94 @@ class Student_Service_Student
                 'code' => 200,
                 'headers' => ['Content-Type' => 'application/json']
             ];
+        } catch (\Exception $_e) {
+            return [
+                'result' => ['message' => $_e->getMessage()],
+                'code' => 400,
+                'headers' => []
+            ];
+        }
+    }
+
+    /**
+     * @param $input
+     * @return array
+     */
+    public function updateStudent($input)
+    {
+        try {
+            if (empty($input['id']) || empty($input['name']) || empty($input['surname']) || empty($input['email'])) {
+                throw new \Exception('Incomplete payload', 400);
+            }
+
+            $_student = $this->getDoctrine()->getRepository(Student::class)->find($input['id']);
+
+            if (!isset($_student)) {
+                throw new \Exception('Student not found', 400);
+            }
+
+            $_student->setName($input['name'])
+                ->setSurname($input['surname'])
+                ->setEmail($input['email']);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($_student);
+            $entityManager->flush();
+
+            return [
+                'result' => [],
+                'code' => 200,
+                'headers' => ['Content-Type' => 'application/json']
+            ];
+        } catch (\Exception $_e) {
+            return [
+                'result' => ['message' => $_e->getMessage()],
+                'code' => 400,
+                'headers' => []
+            ];
+        }
+    }
+
+    /**
+     * @param $input
+     * @return array
+     */
+    public function getStudent($input)
+    {
+        try {
+            if (empty($input['id'])) {
+                $_students = $this->getDoctrine()->getRepository(Student::class)->findAll();
+
+                if (!isset($_students)) {
+                    throw new \Exception('Student not found', 400);
+                }
+
+                $responseContent = [];
+
+                /** @var Student $_student */
+                foreach ($_students as $_student) {
+                    $responseContent[] = $_student->serialize();
+                }
+
+                return [
+                    'result' => $responseContent,
+                    'code' => 200,
+                    'headers' => ['Content-Type' => 'application/json']
+                ];
+            } else {
+                /** @var Student $_student */
+                $_student = $this->getDoctrine()->getRepository(Student::class)->find($input['id']);
+
+                if (!isset($_student)) {
+                    throw new \Exception('Student not found', 400);
+                }
+
+                return [
+                    'result' => $_student->serialize(),
+                    'code' => 200,
+                    'headers' => ['Content-Type' => 'application/json']
+                ];
+            }
         } catch (\Exception $_e) {
             return [
                 'result' => ['message' => $_e->getMessage()],
