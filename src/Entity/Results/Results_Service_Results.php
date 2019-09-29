@@ -2,6 +2,7 @@
 
 namespace App\Entity\Results;
 
+use App\Common\Common;
 use App\Entity\Results;
 
 class Results_Service_Results
@@ -44,11 +45,7 @@ class Results_Service_Results
                 'headers' => ['Content-Type' => 'application/json']
             ];
         } catch (\Exception $_e) {
-            return [
-                'result' => ['message' => $_e->getMessage()],
-                'code' => 400,
-                'headers' => []
-            ];
+            return Common::parseExceptionToResponseArray($_e);
         }
     }
 
@@ -79,11 +76,7 @@ class Results_Service_Results
                 'headers' => ['Content-Type' => 'application/json']
             ];
         } catch (\Exception $_e) {
-            return [
-                'result' => ['message' => $_e->getMessage()],
-                'code' => 400,
-                'headers' => []
-            ];
+            return Common::parseExceptionToResponseArray($_e);
         }
     }
 
@@ -119,11 +112,7 @@ class Results_Service_Results
                 'headers' => ['Content-Type' => 'application/json']
             ];
         } catch (\Exception $_e) {
-            return [
-                'result' => ['message' => $_e->getMessage()],
-                'code' => 400,
-                'headers' => []
-            ];
+            return Common::parseExceptionToResponseArray($_e);
         }
     }
 
@@ -156,11 +145,7 @@ class Results_Service_Results
                 ];
             }
         } catch (\Exception $_e) {
-            return [
-                'result' => ['message' => $_e->getMessage()],
-                'code' => 400,
-                'headers' => []
-            ];
+            return Common::parseExceptionToResponseArray($_e);
         }
     }
 }

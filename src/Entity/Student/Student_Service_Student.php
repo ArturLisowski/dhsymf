@@ -2,6 +2,7 @@
 
 namespace App\Entity\Student;
 
+use App\Common\Common;
 use App\Entity\Student;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -44,11 +45,7 @@ class Student_Service_Student
             ];
 
         } catch (\Exception $_e) {
-            return [
-                'result' => ['message' => $_e->getMessage()],
-                'code' => 400,
-                'headers' => []
-            ];
+            return Common::parseExceptionToResponseArray($_e);
         }
     }
 
@@ -78,11 +75,7 @@ class Student_Service_Student
                 'headers' => ['Content-Type' => 'application/json']
             ];
         } catch (\Exception $_e) {
-            return [
-                'result' => ['message' => $_e->getMessage()],
-                'code' => 400,
-                'headers' => []
-            ];
+            return Common::parseExceptionToResponseArray($_e);
         }
     }
 
@@ -116,11 +109,7 @@ class Student_Service_Student
                 'headers' => ['Content-Type' => 'application/json']
             ];
         } catch (\Exception $_e) {
-            return [
-                'result' => ['message' => $_e->getMessage()],
-                'code' => 400,
-                'headers' => []
-            ];
+            return Common::parseExceptionToResponseArray($_e);
         }
     }
 
@@ -165,11 +154,7 @@ class Student_Service_Student
                 ];
             }
         } catch (\Exception $_e) {
-            return [
-                'result' => ['message' => $_e->getMessage()],
-                'code' => 400,
-                'headers' => []
-            ];
+            return Common::parseExceptionToResponseArray($_e);
         }
     }
 }
