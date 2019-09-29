@@ -18,7 +18,7 @@ class StudentController extends Controller
     public function createStudent(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Student\Student_Service_Student($this->getDoctrine()->getManager()))->createStudent($input);
+        $result = (new Student\StudentService($this->getDoctrine()->getManager()))->createStudent($input);
 
         return Common::prepareResponseFromResult($result);
     }
@@ -30,7 +30,7 @@ class StudentController extends Controller
     public function deleteStudent(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Student\Student_Service_Student($this->getDoctrine()->getManager()))->deleteStudent($input);
+        $result = (new Student\StudentService($this->getDoctrine()->getManager()))->deleteStudent($input);
 
         return Common::prepareResponseFromResult($result);
     }
@@ -42,7 +42,7 @@ class StudentController extends Controller
     public function updateStudent(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Student\Student_Service_Student($this->getDoctrine()->getManager()))->updateStudent($input);
+        $result = (new Student\StudentService($this->getDoctrine()->getManager()))->updateStudent($input);
 
         return Common::prepareResponseFromResult($result);
     }
@@ -54,7 +54,7 @@ class StudentController extends Controller
     public function getStudent(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Student\Student_Service_Student($this->getDoctrine()->getManager()))->getStudent($input);
+        $result = (new Student\StudentService($this->getDoctrine()->getManager()))->getStudent($input);
 
         return Common::prepareResponseFromResult($result);
     }

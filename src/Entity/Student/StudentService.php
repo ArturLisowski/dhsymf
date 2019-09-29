@@ -6,7 +6,7 @@ use App\Common\Common;
 use App\Entity\Student;
 use Symfony\Component\HttpFoundation\Response;
 
-class Student_Service_Student
+class StudentService
 {
     private $_entityManager;
 

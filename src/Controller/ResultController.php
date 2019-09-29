@@ -18,7 +18,7 @@ class ResultController extends Controller
     public function createResult(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Results\Results_Service_Results($this->getDoctrine()->getManager()))->createResult($input);
+        $result = (new Results\ResultsService($this->getDoctrine()->getManager()))->createResult($input);
 
         return Common::prepareResponseFromResult($result);
     }
@@ -30,7 +30,7 @@ class ResultController extends Controller
     public function deleteResult(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Results\Results_Service_Results($this->getDoctrine()->getManager()))->deleteResult($input);
+        $result = (new Results\ResultsService($this->getDoctrine()->getManager()))->deleteResult($input);
 
         return Common::prepareResponseFromResult($result);
     }
@@ -42,7 +42,7 @@ class ResultController extends Controller
     public function updateResult(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Results\Results_Service_Results($this->getDoctrine()->getManager()))->updateResult($input);
+        $result = (new Results\ResultsService($this->getDoctrine()->getManager()))->updateResult($input);
 
         return Common::prepareResponseFromResult($result);
     }
@@ -54,7 +54,7 @@ class ResultController extends Controller
     public function getResult(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Results\Results_Service_Results($this->getDoctrine()->getManager()))->getResult($input);
+        $result = (new Results\ResultsService($this->getDoctrine()->getManager()))->getResult($input);
 
         return Common::prepareResponseFromResult($result);
     }

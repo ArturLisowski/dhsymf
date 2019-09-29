@@ -5,7 +5,7 @@ namespace App\Entity\Results;
 use App\Common\Common;
 use App\Entity\Results;
 
-class Results_Service_Results
+class ResultsService
 {
     private $_entityManager;
 
