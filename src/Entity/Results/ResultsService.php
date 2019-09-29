@@ -101,7 +101,7 @@ class ResultsService
             $_result->setStudentId($input['studentId'])
                 ->setPoints($input['points'])
                 ->setGrade($input['grade'])
-                ->setComment($input['comment']);
+                ->setComment(isset($input['comment']) ? $input['comment'] : null);
 
             $this->_entityManager->persist($_result);
             $this->_entityManager->flush();
