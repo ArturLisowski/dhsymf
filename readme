@@ -1,0 +1,91 @@
+Lists of endpoints and payloads
+
+If is anny error all response have code != 2xx
+and struct :
+{
+"message" : "Details about error"
+}
+
+
+/student:POST
+request:
+
+{
+	"name": "john",
+	"surname": "doe",
+	"email": "john@doe.com"
+}
+
+Fields name, surname and email are type of string and are required.
+
+Response:
+If created - http code 201.
+
+/student:DELETE
+{
+    "id": 11
+}
+
+ID is required and is type of integer.
+Response - http code 200
+
+/student:PUT
+{
+	"id": 12,
+	"name": "john",
+	"surname": "doe",
+	"email": "john@doe.com"
+}
+
+All fields are required. Id is Integer other are string.
+Response HttpCode 200
+
+/student:GET
+{
+    "id": 12
+}
+
+id param is optional. Type is integer. If payload is empty endpoint return list of all students and httpCode 200.
+
+
+/result:POST
+{
+	"studentId": 12,
+	"points": 2,
+	"grade": "dobry",
+	"comment": "test"
+}
+
+StudentId and points are integer. grade is enum with values : bardzo dobry, dobry, dostateczny, dopuszczajacy, niedostateczny.
+comment is string type and is optional. Other are required.
+
+Respone : http 201
+
+/result:PUT
+{
+	"studentId": 12,
+	"id": 4,
+	"points": 2,
+	"grade": "dobry",
+	"comment": "test"
+}
+
+StudentId, id and points are integer. grade is enum with values : bardzo dobry, dobry, dostateczny, dopuszczajacy, niedostateczny.
+comment is string type and is optional. Other are required.
+
+Respone : http 200
+
+/result:GET
+{
+    "id": 12
+}
+
+id param is optional. Type is integer. If payload is empty endpoint return list of all results with students data and httpCode 200.
+
+/result:DELETE
+{
+    "id": 11
+}
+
+ID is required and is type of integer.
+Response - http code 200
