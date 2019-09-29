@@ -97,7 +97,7 @@ class Student_Service_Student
                 throw new \Exception('Incomplete payload', 400);
             }
 
-            $_student = $this->getDoctrine()->getRepository(Student::class)->find($input['id']);
+            $_student = $this->_entityManager->getRepository(Student::class)->find($input['id']);
 
             if (!isset($_student)) {
                 throw new \Exception('Student not found', 400);
@@ -107,9 +107,8 @@ class Student_Service_Student
                 ->setSurname($input['surname'])
                 ->setEmail($input['email']);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($_student);
-            $entityManager->flush();
+            $this->_entityManager->persist($_student);
+            $this->_entityManager->flush();
 
             return [
                 'result' => [],
@@ -133,7 +132,7 @@ class Student_Service_Student
     {
         try {
             if (empty($input['id'])) {
-                $_students = $this->getDoctrine()->getRepository(Student::class)->findAll();
+                $_students = $this->_entityManager->getRepository(Student::class)->findAll();
 
                 if (!isset($_students)) {
                     throw new \Exception('Student not found', 400);
@@ -153,7 +152,7 @@ class Student_Service_Student
                 ];
             } else {
                 /** @var Student $_student */
-                $_student = $this->getDoctrine()->getRepository(Student::class)->find($input['id']);
+                $_student = $this->_entityManager->getRepository(Student::class)->find($input['id']);
 
                 if (!isset($_student)) {
                     throw new \Exception('Student not found', 400);

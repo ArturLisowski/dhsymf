@@ -41,7 +41,7 @@ class StudentController extends Controller
     public function updateStudent(Request $_request)
     {
         $input = json_decode($_request->getContent(), true);
-        $result = (new Student\Student_Service_Student($this->getDoctrine()->getManager()))->updateStudent()($input);
+        $result = (new Student\Student_Service_Student($this->getDoctrine()->getManager()))->updateStudent($input);
 
         return new Response(json_encode($result['result']), $result['code'], $result['headers']);
     }
