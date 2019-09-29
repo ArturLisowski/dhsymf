@@ -4,7 +4,6 @@ namespace App\Entity\Student;
 
 use App\Common\Common;
 use App\Entity\Student;
-use Symfony\Component\HttpFoundation\Response;
 
 class StudentService
 {

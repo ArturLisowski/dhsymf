@@ -1,41 +1,41 @@
 StudentCreate:
-    path: /student
-    controller: App\Controller\StudentController::createStudent
-    methods: POST
+  path: /student
+  controller: App\Controller\StudentController::createStudent
+  methods: POST
 
 StudentDelete:
-    path: /student
-    controller: App\Controller\StudentController::deleteStudent
-    methods: DELETE
+  path: /student
+  controller: App\Controller\StudentController::deleteStudent
+  methods: DELETE
 
 StudentUpdate:
-    path: /student
-    controller: App\Controller\StudentController::updateStudent
-    methods: PUT
+  path: /student
+  controller: App\Controller\StudentController::updateStudent
+  methods: PUT
 
 StudentGet:
-    path: /student
-    controller: App\Controller\StudentController::getStudent
-    methods: Get
+  path: /student
+  controller: App\Controller\StudentController::getStudent
+  methods: Get
 
 ########################################################################################################################
 
 ResultCreate:
-    path: /result
-    controller: App\Controller\ResultController::createResult
-    methods: POST
+  path: /result
+  controller: App\Controller\ResultController::createResult
+  methods: POST
 
 ResultDelete:
-    path: /result
-    controller: App\Controller\ResultController::deleteResult
-    methods: DELETE
+  path: /result
+  controller: App\Controller\ResultController::deleteResult
+  methods: DELETE
 
 ResultUpdate:
-    path: /result
-    controller: App\Controller\ResultController::updateResult
-    methods: PUT
+  path: /result
+  controller: App\Controller\ResultController::updateResult
+  methods: PUT
 
 ResultGet:
-    path: /result
-    controller: App\Controller\ResultController::getResult
-    methods: Get
+  path: /result
+  controller: App\Controller\ResultController::getResult
+  methods: Get
