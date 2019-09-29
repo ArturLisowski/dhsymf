@@ -16,6 +16,7 @@
       "ext-json": "*"
     },
     "require-dev": {
+        "symfony/phpunit-bridge": "^4.3"
     },
     "config": {
         "preferred-install": {

@@ -89,3 +89,9 @@ id param is optional. Type is integer. If payload is empty endpoint return list 
 
 ID is required and is type of integer.
 Response - http code 200
+
+
+Comments:
+I know that deleting is incorrect - should be removed only logical (flag Active true/false) but i have limited time for do this task,
+so I resigned from iplement a soft delete.
+
