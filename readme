@@ -95,3 +95,17 @@ Comments:
 I know that deleting is incorrect - should be removed only logical (flag Active true/false) but i have limited time for do this task,
 so I resigned from iplement a soft delete.
 
+Test - is only one for example and show that i know how to write tests. Its only positive case. For negative case i should pass for example other type of exception, or string.
+To data provider is possible add more cases.
+
+Endpoints should by covered by functional tests - should checking results for inputs - positive and negative cases.
+
+In integrations with other services we should mock responses for example using mockery and partitial mock.
+
+In this code is a lot to do , but the time is limited, so thing what should be do better:
+soft delete,
+relations in DB by migrations, and keys on DB.
+more validations for example strip html tags and cut of js code from names (Any midleware before seter?)
+any API authentyfication now everybody can use endpoints,
+allow cors in config
+
